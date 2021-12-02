@@ -14,3 +14,18 @@ export const getProducts = async () => {
     };
   }
 };
+
+export const getMetadata = async () => {
+  try {
+    const data = await fetchAPI("/metadata");
+    return {
+      error: false,
+      data,
+    };
+  } catch (error) {
+    return {
+      error: true,
+      data: error,
+    };
+  }
+};

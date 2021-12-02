@@ -7,11 +7,12 @@ import { ProductsWrapper } from "./ProductsWrapper";
 import { SectionTitle } from "./SectionTitle";
 import { ProductState } from "../../@types/product";
 import { getProducts } from "../../utils/services";
-import product, {
+import {
   getProductsSuccess,
   hasError,
   startLoading,
 } from "../../features/product";
+import { FilterState } from "../../@types/filter";
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
