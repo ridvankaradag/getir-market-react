@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as ReactLogo } from "../../assets/shoppingCart.svg";
+import { ReactComponent as ShoppingCartIcon } from "../../assets/shoppingCart.svg";
 
 const Basket = styled.div`
   position: absolute;
@@ -28,7 +28,7 @@ const BasketPrice = styled.span`
 
 const BasketButton = () => (
   <Basket>
-    <ReactLogo />
+    <ShoppingCartIcon />
     <BasketPrice>₺ 39.97</BasketPrice>
   </Basket>
 );
