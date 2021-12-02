@@ -1,13 +1,21 @@
 import { ThemeProvider } from "styled-components";
-import Layout from "./components/Layout";
+import Layout, {
+  BasketWrapper,
+  FilterWrapper,
+  MainWrapper,
+} from "./components/Layout";
+import HeaderContainer from "./containers/Header";
 import theme, { GlobalStyle } from "./theme";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <HeaderContainer />
       <Layout>
-        <h1>Hello</h1>
+        <FilterWrapper />
+        <MainWrapper />
+        <BasketWrapper />
       </Layout>
     </ThemeProvider>
   );

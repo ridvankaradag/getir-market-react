@@ -1,6 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
 const theme = {
+  breakpoints: {
+    mobileSmall: "320px",
+    mobileMedium: "375px",
+    mobileLarge: "425px",
+    tablet: "768px",
+    laptop: "1024px",
+    laptopLarge: "1440px",
+  },
   colors: {
     black: "#191919",
     grayBackground: "#FAFAFA",
@@ -23,6 +31,30 @@ const theme = {
     regular: 400,
     semiBold: 600,
     bold: 700,
+  },
+  fontSizes: {
+    xsmall: "12px",
+    small: "13px",
+    medium: "14px",
+    large: "15px",
+    xlarge: "20px",
+  },
+  lineHeights: {
+    xsmall: "16px",
+    small: "18px",
+    medium: "20px",
+    large: "24px",
+    xlarge: "26px",
+  },
+  letterSpacings: {
+    none: "0%",
+    small: "0.15px",
+    medium: "0.16px",
+    large: "0.25px",
+  },
+  sizes: {
+    header: "76px",
+    layout: "1232px",
   },
 };
 
