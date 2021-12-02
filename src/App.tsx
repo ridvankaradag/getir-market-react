@@ -5,6 +5,7 @@ import Layout, {
   MainWrapper,
 } from "./components/Layout";
 import HeaderContainer from "./containers/Header";
+import ProductList from "./containers/ProductList";
 import theme, { GlobalStyle } from "./theme";
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
       <HeaderContainer />
       <Layout>
         <FilterWrapper />
-        <MainWrapper />
+        <MainWrapper>
+          <ProductList />
+        </MainWrapper>
         <BasketWrapper />
       </Layout>
     </ThemeProvider>

@@ -22,7 +22,7 @@ const theme = {
     white: "#FFFFFF",
     lightBackground: "#FEFEFE",
     infoLight: "#F3F0FE",
-    infoLightest: "F2F0FD",
+    infoLightest: "#F2F0FD",
     info: "#E0E0E0",
     infoDark: "#DFDEE2",
     placeholder: "#C4C4C4",
