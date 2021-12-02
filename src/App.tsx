@@ -4,6 +4,8 @@ import Layout, {
   FilterWrapper,
   MainWrapper,
 } from "./components/Layout";
+import BasketContainer from "./containers/Basket";
+import FilterContainer from "./containers/Filter";
 import HeaderContainer from "./containers/Header";
 import ProductList from "./containers/ProductList";
 import theme, { GlobalStyle } from "./theme";
@@ -14,11 +16,15 @@ function App() {
       <GlobalStyle />
       <HeaderContainer />
       <Layout>
-        <FilterWrapper />
+        <FilterWrapper>
+          <FilterContainer></FilterContainer>
+        </FilterWrapper>
         <MainWrapper>
           <ProductList />
         </MainWrapper>
-        <BasketWrapper />
+        <BasketWrapper>
+          <BasketContainer />
+        </BasketWrapper>
       </Layout>
     </ThemeProvider>
   );

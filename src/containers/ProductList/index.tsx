@@ -1,39 +1,50 @@
-import styled from "styled-components";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import Product from "../../components/Product";
+import Pagination from "../Pagination";
 import TagList from "../TagList";
+import { ProductsWrapper } from "./ProductsWrapper";
+import { SectionTitle } from "./SectionTitle";
+import { ProductState } from "../../@types/product";
+import { getProducts } from "../../utils/services";
+import product, {
+  getProductsSuccess,
+  hasError,
+  startLoading,
+} from "../../features/product";
 
-const SectionTitle = styled.h2`
-  font-size: ${(props) => props.theme.fontSizes.xlarge};
-  font-weight: ${(props) => props.theme.fontWeights.regular};
-  line-height: ${(props) => props.theme.lineHeights.xlarge};
-  letter-spacing: ${(props) => props.theme.letterSpacings.large};
-  color: ${(props) => props.theme.colors.grayDarkest};
-`;
+const ProductList = () => {
+  const dispatch = useAppDispatch();
+  const { products, isLoading, error } = useAppSelector(
+    (state: { product: ProductState }) => state.product
+  );
 
-const ProductsWrapper = styled.div`
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px 24px;
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.tablet}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.laptop}) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
-const ProductList = () => (
-  <>
-    <SectionTitle>Products</SectionTitle>
-    <TagList />
-    <ProductsWrapper>
-      {Array(16)
-        .fill(Math.random())
-        .map(() => (
-          <Product />
+  console.log(products, isLoading, error);
+
+  console.log(products);
+  useEffect(() => {
+    (async function init() {
+      dispatch(startLoading());
+      const { error, data } = await getProducts();
+      if (error) {
+        dispatch(hasError(data));
+      } else {
+        dispatch(getProductsSuccess(data));
+      }
+    })();
+  }, [dispatch]);
+  return (
+    <>
+      <SectionTitle>Products</SectionTitle>
+      <TagList />
+      <ProductsWrapper>
+        {products.map((product) => (
+          <Product product={product} />
         ))}
-    </ProductsWrapper>
-  </>
-);
+      </ProductsWrapper>
+      <Pagination />
+    </>
+  );
+};
 
 export default ProductList;

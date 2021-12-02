@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ProductType } from "../@types/product";
+import { getImageUrl } from "../utils/image";
 import { PrimaryButton } from "./Button";
 
 const ProductWrapper = styled.article`
@@ -41,15 +43,18 @@ const ProductAddButton = styled(PrimaryButton)`
   color: ${(props) => props.theme.colors.white};
 `;
 
-const Product = () => (
+type ProductProps = {
+  product: ProductType;
+};
+const Product = ({ product }: ProductProps) => (
   <ProductWrapper>
     <ProductImageWrapper>
-      <ProductImage src="https://picsum.photos/id/1/92/92" />
+      <ProductImage src={getImageUrl()} />
     </ProductImageWrapper>
     <ProductPrice>
-      <ProductCurrency>₺</ProductCurrency> 20.99
+      <ProductCurrency>₺</ProductCurrency> {product.price}
     </ProductPrice>
-    <ProductName>Practical Ocean Mug</ProductName>
+    <ProductName>{product.name}</ProductName>
     <ProductAddButton block>Add</ProductAddButton>
   </ProductWrapper>
 );
