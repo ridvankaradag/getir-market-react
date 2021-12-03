@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import ProductShort from "../../components/ProductShort";
 import { calculateBasketAmount } from "../../utils/price";
 import QuantityInputAction from "../QuantityInputAction";
+import { ReactComponent as NoDataIcon } from "../../assets/noData.svg";
 
 const Wrapper = styled.div`
   border: 8px solid;
@@ -43,6 +44,36 @@ const CheckoutButton = styled(Button)`
   }
 `;
 
+const EmptyBasket = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const EmptyTitle = styled.h2`
+  font-size: ${(props) => props.theme.fontSizes.medium};
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
+  line-height: ${(props) => props.theme.lineHeights.xsmall};
+  letter-spacing: ${(props) => props.theme.letterSpacings.none};
+  color: ${(props) => props.theme.colors.primary};
+`;
+const EmptySubTitle = styled.h6`
+  font-size: ${(props) => props.theme.fontSizes.small};
+  font-weight: ${(props) => props.theme.fontWeights.regular};
+  line-height: ${(props) => props.theme.lineHeights.xsmall};
+  letter-spacing: ${(props) => props.theme.letterSpacings.none};
+  color: ${(props) => props.theme.colors.grayLight};
+`;
+const IconWrapper = styled.div`
+  color: ${(props) => props.theme.colors.primary};
+  opacity: 0.5;
+  & > svg {
+    width: 100px;
+  }
+`;
+
 const BasketContainer = () => {
   const { items } = useAppSelector(
     (state: { basket: BasketState }) => state.basket
@@ -56,7 +87,19 @@ const BasketContainer = () => {
           <QuantityInputAction productSlug={item.slug} />
         </ProductShortWrapper>
       ))}
-      <CheckoutButton>₺{calculateBasketAmount(items)}</CheckoutButton>
+      {items.length === 0 ? (
+        <EmptyBasket>
+          <IconWrapper>
+            <NoDataIcon />
+          </IconWrapper>
+          <EmptyTitle>Your basket is empty</EmptyTitle>
+          <EmptySubTitle>
+            Add product(s) to your basket to place an order.
+          </EmptySubTitle>
+        </EmptyBasket>
+      ) : (
+        <CheckoutButton>₺{calculateBasketAmount(items)}</CheckoutButton>
+      )}
     </Wrapper>
   );
 };
