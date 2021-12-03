@@ -15,4 +15,5 @@ export const SearchBox = styled.input`
   &::placeholder {
     color: ${(props) => props.theme.colors.grayLight};
   }
+  margin: 24px 24px 0 24px;
 `;

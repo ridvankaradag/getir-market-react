@@ -65,6 +65,9 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
+body {
+  background-color: ${theme.colors.grayBackground}
+}
 li.rc-pagination-item, li.rc-pagination-jump-next, li.rc-pagination-jump-prev, .rc-pagination-prev, .rc-pagination-next {
   min-width: inherit;
   height: initial;

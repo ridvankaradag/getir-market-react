@@ -31,12 +31,13 @@ export const ScrolledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px 24px 0 24px;
+  padding: 0;
 `;
 
 export const ScrolledGroupWrapper = styled(GroupWrapper)`
   overflow-y: auto;
-  padding: 0 0 24px 0;
+  margin: 0 24px 24px 0;
+  padding: 0 0 0 24px;
   ::-webkit-scrollbar {
     width: 4px;
   }

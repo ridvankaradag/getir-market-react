@@ -23,7 +23,7 @@ export const Quantity = styled.div<QuantityType>`
 `;
 
 export const QuantityButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: transparent;
   color: ${(props) => props.theme.colors.primary};
   display: flex;
   align-items: center;
