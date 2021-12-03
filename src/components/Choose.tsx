@@ -33,7 +33,7 @@ export const CheckMark = styled.span`
 `;
 
 export const ContainerLabel = styled.label`
-  display: block;
+  display: flex;
   position: relative;
   padding-left: 34px;
   cursor: pointer;

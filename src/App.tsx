@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import Footer from "./components/Footer";
 import Layout, {
   BasketWrapper,
   FilterWrapper,
@@ -26,6 +27,7 @@ function App() {
           <BasketContainer />
         </BasketWrapper>
       </Layout>
+      <Footer />
     </ThemeProvider>
   );
 }

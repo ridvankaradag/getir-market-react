@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   margin-bottom: 24px;
   width: 100%;
   display: flex;
@@ -8,26 +8,47 @@ const Wrapper = styled.div`
   gap: 12px;
 `;
 
-const GroupTitle = styled.h4`
+export const GroupTitle = styled.h4`
   font-size: ${(props) => props.theme.fontSizes.small};
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
   letter-spacing: ${(props) => props.theme.letterSpacings.none};
   color: ${(props) => props.theme.colors.grayMedium};
 `;
-const GroupWrapper = styled.div`
+export const GroupWrapper = styled.div`
+  padding: 24px;
+  background-color: ${(props) => props.theme.colors.white};
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 274px;
+`;
+
+export const ScrolledContainer = styled.div`
+  background-color: ${(props) => props.theme.colors.white};
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 24px;
 `;
 
-type FilterSortCardType = {
-  title: string;
-  children: React.ReactNode;
-};
+export const ScrolledGroupWrapper = styled(GroupWrapper)`
+  overflow-y: auto;
+  padding: 0;
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-const FilterSortCard = ({ children, title }: FilterSortCardType) => (
-  <Wrapper>
-    <GroupTitle>{title}</GroupTitle>
-    <GroupWrapper>{children}</GroupWrapper>
-  </Wrapper>
-);
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.colors.info};
+    border-radius: 4px;
+  }
 
-export default FilterSortCard;
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme.colors.infoDark};
+  }
+`;
