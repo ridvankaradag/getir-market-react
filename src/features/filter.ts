@@ -8,9 +8,9 @@ const initialState: FilterState = {
   tags: [],
   itemTypes: [],
   sorts: [
-    { name: "Price low to high", value: "_sort=added&_order=asc" },
-    { name: "Price high to low", value: "_sort=added&_order=asc" },
-    { name: "New to old", value: "_sort=added&_order=asc" },
+    { name: "Price low to high", value: "_sort=price&_order=asc" },
+    { name: "Price high to low", value: "_sort=price&_order=desc" },
+    { name: "New to old", value: "_sort=added&_order=desc" },
     { name: "Old to new", value: "_sort=added&_order=asc" },
     { name: "Default", value: "" },
   ],
@@ -18,6 +18,7 @@ const initialState: FilterState = {
   selectedBrands: [],
   selectedTags: [],
   selectedItemType: "",
+  currentPage: 1,
 };
 
 export const filterSlice = createSlice({

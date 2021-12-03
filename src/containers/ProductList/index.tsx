@@ -13,6 +13,7 @@ import {
   startLoading,
 } from "../../features/product";
 import { FilterState } from "../../@types/filter";
+import { queryParamsGenerator } from "../../utils/query";
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -20,20 +21,43 @@ const ProductList = () => {
     (state: { product: ProductState }) => state.product
   );
 
+  const {
+    currentPage,
+    selectedBrands,
+    selectedTags,
+    selectedItemType,
+    selectedSort,
+  } = useAppSelector((state: { filter: FilterState }) => state.filter);
+
   console.log(products, isLoading, error);
 
   console.log(products);
   useEffect(() => {
     (async function init() {
       dispatch(startLoading());
-      const { error, data } = await getProducts();
+      const { error, data } = await getProducts(
+        queryParamsGenerator({
+          currentPage,
+          selectedBrands,
+          selectedTags,
+          selectedItemType,
+          selectedSort,
+        })
+      );
       if (error) {
         dispatch(hasError(data));
       } else {
         dispatch(getProductsSuccess(data));
       }
     })();
-  }, [dispatch]);
+  }, [
+    dispatch,
+    currentPage,
+    selectedBrands,
+    selectedTags,
+    selectedItemType,
+    selectedSort,
+  ]);
   return (
     <>
       <SectionTitle>Products</SectionTitle>

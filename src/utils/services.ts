@@ -1,8 +1,8 @@
 import { fetchAPI } from "./api";
 
-export const getProducts = async () => {
+export const getProducts = async (query: string) => {
   try {
-    const data = await fetchAPI("/items?_page=1&_limit=16");
+    const data = await fetchAPI(`/items?_limit=16${query}`);
     return {
       error: false,
       data,

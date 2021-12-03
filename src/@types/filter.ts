@@ -18,5 +18,6 @@ export type FilterState = {
   selectedSort: string;
   selectedBrands: MetadataType[];
   selectedTags: MetadataType[];
-  selectedItemType: string | null;
+  selectedItemType: string;
+  currentPage: number;
 };
