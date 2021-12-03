@@ -3,6 +3,7 @@ import { BasketState } from "../../@types/basket";
 import { useAppSelector } from "../../app/hooks";
 import Button from "../../components/Button";
 import ProductShort from "../../components/ProductShort";
+import { calculateBasketAmount } from "../../utils/price";
 import QuantityInputAction from "../QuantityInputAction";
 
 const Wrapper = styled.div`
@@ -55,7 +56,7 @@ const BasketContainer = () => {
           <QuantityInputAction productSlug={item.slug} />
         </ProductShortWrapper>
       ))}
-      <CheckoutButton>₺19.98</CheckoutButton>
+      <CheckoutButton>₺{calculateBasketAmount(items)}</CheckoutButton>
     </Wrapper>
   );
 };

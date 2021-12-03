@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import { BasketState } from "../../@types/basket";
+import { useAppSelector } from "../../app/hooks";
 import { ReactComponent as ShoppingCartIcon } from "../../assets/shoppingCart.svg";
+import { calculateBasketAmount } from "../../utils/price";
 
 const Basket = styled.div`
   position: absolute;
@@ -26,11 +29,16 @@ const BasketPrice = styled.span`
   letter-spacing: ${(props) => props.theme.letterSpacings.medium};
 `;
 
-const BasketButton = () => (
-  <Basket>
-    <ShoppingCartIcon />
-    <BasketPrice>₺ 39.97</BasketPrice>
-  </Basket>
-);
+const BasketButton = () => {
+  const { items } = useAppSelector(
+    (state: { basket: BasketState }) => state.basket
+  );
+  return (
+    <Basket>
+      <ShoppingCartIcon />
+      <BasketPrice>₺ {calculateBasketAmount(items)}</BasketPrice>
+    </Basket>
+  );
+};
 
 export default BasketButton;
