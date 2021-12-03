@@ -7,24 +7,35 @@ import {
 } from "../../components/FilterSortGroup";
 import { SearchBox } from "../../components/SearchBox";
 
-type FilterSortCardType = {
+interface FilterSortCardType {
   title: string;
   children: React.ReactNode;
+}
+
+interface SearchableCardType extends FilterSortCardType {
   hasSearchBox?: boolean;
   searchBoxPlaceholder?: string;
-};
+  search?: string;
+  setSearch?: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const FilterSortCard = ({
+const FilterSortCard: React.FC<SearchableCardType> = ({
   children,
   title,
   hasSearchBox,
   searchBoxPlaceholder,
-}: FilterSortCardType) => (
+  search,
+  setSearch,
+}) => (
   <Wrapper>
     <GroupTitle>{title}</GroupTitle>
     {hasSearchBox ? (
       <ScrolledContainer>
-        <SearchBox placeholder={searchBoxPlaceholder} />
+        <SearchBox
+          placeholder={searchBoxPlaceholder}
+          value={search}
+          onChange={(e) => setSearch && setSearch(e.target.value)}
+        />
         <ScrolledGroupWrapper>{children}</ScrolledGroupWrapper>
       </ScrolledContainer>
     ) : (
