@@ -8,5 +8,6 @@ export async function fetchAPI(path: string) {
   const requestUrl = getServerURL(path);
   const response = await fetch(requestUrl);
   const data = await response.json();
-  return data;
+  const totalCount = response.headers.get("X-Total-Count");
+  return { data, totalCount };
 }

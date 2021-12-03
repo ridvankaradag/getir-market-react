@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { QuantityInputType, QuantityType } from "../@types/quantity";
+import { QuantityType } from "../@types/quantity";
 import Button from "./Button";
 
 export const InputWrapper = styled.div<QuantityType>`

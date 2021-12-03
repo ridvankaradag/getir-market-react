@@ -13,6 +13,7 @@ export type ProductState = {
   isLoading: boolean;
   error: boolean;
   products: ProductType[];
+  totalCount: number;
 };
 
 export type ProductActionType = {

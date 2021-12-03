@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ProductState, ProductType } from "../@types/product";
+import { ProductState } from "../@types/product";
 
 const initialState: ProductState = {
   isLoading: false,
   error: false,
   products: [],
+  totalCount: 0,
 };
 
 export const productSlice = createSlice({
@@ -20,7 +21,8 @@ export const productSlice = createSlice({
     },
     getProductsSuccess(state, action) {
       state.isLoading = false;
-      state.products = action.payload;
+      state.products = action.payload.data;
+      state.totalCount = action.payload.totalCount;
     },
   },
 });

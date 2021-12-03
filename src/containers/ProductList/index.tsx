@@ -17,7 +17,7 @@ import { queryParamsGenerator } from "../../utils/query";
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
-  const { products, isLoading, error } = useAppSelector(
+  const { products, isLoading, error, totalCount } = useAppSelector(
     (state: { product: ProductState }) => state.product
   );
 
@@ -29,13 +29,13 @@ const ProductList = () => {
     selectedSort,
   } = useAppSelector((state: { filter: FilterState }) => state.filter);
 
-  console.log(products, isLoading, error);
+  console.log(totalCount);
 
   console.log(products);
   useEffect(() => {
     (async function init() {
       dispatch(startLoading());
-      const { error, data } = await getProducts(
+      const { error, data, totalCount } = await getProducts(
         queryParamsGenerator({
           currentPage,
           selectedBrands,
@@ -47,7 +47,7 @@ const ProductList = () => {
       if (error) {
         dispatch(hasError(data));
       } else {
-        dispatch(getProductsSuccess(data));
+        dispatch(getProductsSuccess({ data, totalCount }));
       }
     })();
   }, [
