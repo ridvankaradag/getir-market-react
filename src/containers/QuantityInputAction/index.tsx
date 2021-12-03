@@ -6,6 +6,7 @@ import {
 } from "../../components/QuantityInput";
 import { ReactComponent as MinusIcon } from "../../assets/minusIcon.svg";
 import { ReactComponent as PlusIcon } from "../../assets/plusIcon.svg";
+import { ReactComponent as TrashIcon } from "../../assets/trashIcon.svg";
 import { BasketState } from "../../@types/basket";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
@@ -39,7 +40,7 @@ const QuantityInputAction = ({
             )
           }
         >
-          <MinusIcon />
+          {item.quantity > 1 ? <MinusIcon /> : <TrashIcon />}
         </QuantityButton>
         <Quantity size={size}>{item?.quantity}</Quantity>
         <QuantityButton onClick={() => dispatch(increaseQuantity(productSlug))}>
