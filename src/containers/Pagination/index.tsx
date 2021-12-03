@@ -6,6 +6,7 @@ import { FilterState } from "../../@types/filter";
 import { changePage } from "../../features/filter";
 import { ReactComponent as LeftArrowIcon } from "../../assets/leftArrowIcon.svg";
 import { ReactComponent as RightArrowIcon } from "../../assets/rightArrowIcon.svg";
+import { useEffect } from "react";
 
 const PaginationWrapper = styled.div`
   margin-top: 32px;
@@ -69,7 +70,7 @@ const PrevNextItem = styled.span`
 
 const PaginationContainer = () => {
   const dispatch = useAppDispatch();
-  const { products, isLoading, error, totalCount } = useAppSelector(
+  const { totalCount } = useAppSelector(
     (state: { product: ProductState }) => state.product
   );
 
@@ -77,8 +78,13 @@ const PaginationContainer = () => {
     (state: { filter: FilterState }) => state.filter
   );
 
+  useEffect(() => {
+    if (Math.ceil(totalCount / 16) < currentPage) {
+      dispatch(changePage(1));
+    }
+  }, [dispatch, totalCount, currentPage]);
+
   const itemRender = (current: number, type: any, element: any) => {
-    console.log(current, type, element);
     if (type === "prev") {
       return (
         <PrevNextItem>

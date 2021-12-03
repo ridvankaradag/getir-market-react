@@ -21,9 +21,7 @@ const ProductAction = ({ productSlug }: ProductActionType) => {
   };
 
   const addToBasket = () => {
-    console.log();
     const product = products.find((item) => item.slug === productSlug);
-    console.log(products);
     if (product) {
       const { name, price, slug } = product;
       dispatch(addItem({ name, price, slug, quantity: 1 }));

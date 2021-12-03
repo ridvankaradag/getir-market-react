@@ -26,6 +26,5 @@ export const queryParamsGenerator = ({
   if (selectedSort !== "") {
     query += `&${selectedSort}`;
   }
-  console.log(query);
   return query;
 };
