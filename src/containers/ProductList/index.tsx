@@ -15,6 +15,8 @@ import {
 import { FilterState } from "../../@types/filter";
 import { queryParamsGenerator } from "../../utils/query";
 import Loading from "../../components/Loading";
+import Tag from "../../components/Tag";
+import FilterModal from "../../components/FilterModal";
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
@@ -64,6 +66,7 @@ const ProductList = () => {
     <>
       <SectionTitle>Products</SectionTitle>
       <TagList />
+      <FilterModal />
       <ProductsWrapper>
         {products.map((product) => (
           <Product product={product} />

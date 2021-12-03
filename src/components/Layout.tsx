@@ -32,6 +32,9 @@ export const MainWrapper = styled.main`
 `;
 export const FilterWrapper = styled.aside`
   grid-area: filterWrapper;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    display: none;
+  }
 `;
 export const BasketWrapper = styled.aside`
   grid-area: basketWrapper;

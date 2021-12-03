@@ -8,6 +8,9 @@ const TagWrapper = styled.div`
   margin: 16px 0;
   display: flex;
   gap: 8px;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    justify-content: center;
+  }
 `;
 
 const TagList = () => {
