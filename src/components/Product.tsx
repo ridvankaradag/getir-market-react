@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { ProductType } from "../@types/product";
+import ProductAction from "../containers/ProductAction";
 import { getImageUrl } from "../utils/image";
-import { PrimaryButton } from "./Button";
+import { ProductAddButton } from "./ProductAddButton";
 
 const ProductWrapper = styled.article`
   display: flex;
@@ -33,15 +34,6 @@ const ProductName = styled.h3`
   color: ${(props) => props.theme.colors.black};
   margin-bottom: 8px;
 `;
-const ProductAddButton = styled(PrimaryButton)`
-  height: 22px;
-  margin-top: auto;
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
-  font-weight: ${(props) => props.theme.fontWeights.semibold};
-  line-height: ${(props) => props.theme.lineHeights.medium};
-  letter-spacing: ${(props) => props.theme.letterSpacings.none};
-  color: ${(props) => props.theme.colors.white};
-`;
 
 type ProductProps = {
   product: ProductType;
@@ -55,7 +47,7 @@ const Product = ({ product }: ProductProps) => (
       <ProductCurrency>₺</ProductCurrency> {product.price}
     </ProductPrice>
     <ProductName>{product.name}</ProductName>
-    <ProductAddButton block>Add</ProductAddButton>
+    <ProductAction productSlug={product.slug} />
   </ProductWrapper>
 );
 

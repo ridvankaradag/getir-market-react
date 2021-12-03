@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BasketItemType } from "../@types/basket";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,10 +21,10 @@ const ProductPrice = styled.span`
   letter-spacing: ${(props) => props.theme.letterSpacings.medium};
   color: ${(props) => props.theme.colors.primary};
 `;
-const ProductShort = () => (
+const ProductShort = ({ product }: { product: BasketItemType }) => (
   <Wrapper>
-    <ProductTitle>Example Product</ProductTitle>
-    <ProductPrice>₺14,99</ProductPrice>
+    <ProductTitle>{product.name}</ProductTitle>
+    <ProductPrice>₺{product.price}</ProductPrice>
   </Wrapper>
 );
 

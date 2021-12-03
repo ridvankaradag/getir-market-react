@@ -14,3 +14,7 @@ export type ProductState = {
   error: boolean;
   products: ProductType[];
 };
+
+export type ProductActionType = {
+  productSlug: string;
+};

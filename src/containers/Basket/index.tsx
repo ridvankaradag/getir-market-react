@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { BasketState } from "../../@types/basket";
+import { useAppSelector } from "../../app/hooks";
 import Button from "../../components/Button";
 import ProductShort from "../../components/ProductShort";
-import QuantityInput from "../../components/QuantityInput";
+import QuantityInputAction from "../QuantityInputAction";
 
 const Wrapper = styled.div`
   border: 8px solid;
@@ -40,22 +42,22 @@ const CheckoutButton = styled(Button)`
   }
 `;
 
-const BasketContainer = () => (
-  <Wrapper>
-    <ProductShortWrapper>
-      <ProductShort />
-      <QuantityInput />
-    </ProductShortWrapper>
-    <ProductShortWrapper>
-      <ProductShort />
-      <QuantityInput />
-    </ProductShortWrapper>
-    <ProductShortWrapper>
-      <ProductShort />
-      <QuantityInput />
-    </ProductShortWrapper>
-    <CheckoutButton>₺19.98</CheckoutButton>
-  </Wrapper>
-);
+const BasketContainer = () => {
+  const { items } = useAppSelector(
+    (state: { basket: BasketState }) => state.basket
+  );
+
+  return (
+    <Wrapper>
+      {items.map((item) => (
+        <ProductShortWrapper key={item.slug}>
+          <ProductShort product={item} />
+          <QuantityInputAction productSlug={item.slug} />
+        </ProductShortWrapper>
+      ))}
+      <CheckoutButton>₺19.98</CheckoutButton>
+    </Wrapper>
+  );
+};
 
 export default BasketContainer;
