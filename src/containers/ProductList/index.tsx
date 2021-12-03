@@ -15,7 +15,6 @@ import {
 import { FilterState } from "../../@types/filter";
 import { queryParamsGenerator } from "../../utils/query";
 import Loading from "../../components/Loading";
-import Tag from "../../components/Tag";
 import FilterModal from "../../components/FilterModal";
 
 const ProductList = () => {
@@ -69,7 +68,7 @@ const ProductList = () => {
       <FilterModal />
       <ProductsWrapper>
         {products.map((product) => (
-          <Product product={product} />
+          <Product product={product} key={product.slug} />
         ))}
       </ProductsWrapper>
       <Pagination />

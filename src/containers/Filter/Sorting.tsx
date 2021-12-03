@@ -13,6 +13,7 @@ const Sorting = () => {
     <FilterSortCard title="Sorting">
       {sorts.map((sort) => (
         <RadioItem
+          key={sort.value}
           onChange={(e) => dispatch(changeSort(sort.value))}
           label={sort.name}
           name="sort"

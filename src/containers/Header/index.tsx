@@ -31,7 +31,7 @@ const HeaderContainer = () => (
   <Header>
     <HeaderWrapper>
       <LogoWrapper>
-        <Logo src={logo} />
+        <Logo src={logo} alt="Logo" />
       </LogoWrapper>
       <BasketButton />
     </HeaderWrapper>

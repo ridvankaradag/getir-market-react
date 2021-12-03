@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ProductType } from "../@types/product";
 import ProductAction from "../containers/ProductAction";
 import { getImageUrl } from "../utils/image";
-import { ProductAddButton } from "./ProductAddButton";
 
 const ProductWrapper = styled.article`
   display: flex;
@@ -41,7 +40,7 @@ type ProductProps = {
 const Product = ({ product }: ProductProps) => (
   <ProductWrapper>
     <ProductImageWrapper>
-      <ProductImage src={getImageUrl()} />
+      <ProductImage src={getImageUrl()} alt={product.name} />
     </ProductImageWrapper>
     <ProductPrice>
       <ProductCurrency>₺</ProductCurrency> {product.price}

@@ -59,7 +59,7 @@ const EmptyTitle = styled.h2`
   letter-spacing: ${(props) => props.theme.letterSpacings.none};
   color: ${(props) => props.theme.colors.primary};
 `;
-const EmptySubTitle = styled.h6`
+const EmptySubTitle = styled.p`
   font-size: ${(props) => props.theme.fontSizes.small};
   font-weight: ${(props) => props.theme.fontWeights.regular};
   line-height: ${(props) => props.theme.lineHeights.xsmall};
