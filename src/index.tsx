@@ -5,6 +5,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import "rc-pagination/assets/index.css";
 
 ReactDOM.render(
   <React.StrictMode>

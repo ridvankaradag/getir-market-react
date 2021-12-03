@@ -41,6 +41,9 @@ export const filterSlice = createSlice({
       state.selectedBrands = [brands[0]];
       state.selectedTags = [tags[0]];
     },
+    changePage(state, action) {
+      state.currentPage = action.payload;
+    },
     changeSort(state, action) {
       state.selectedSort = action.payload;
     },
@@ -103,4 +106,5 @@ export const {
   addTags,
   removeTags,
   changeItemType,
+  changePage,
 } = filterSlice.actions;

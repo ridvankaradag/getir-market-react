@@ -65,6 +65,23 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
+li.rc-pagination-item, li.rc-pagination-jump-next, li.rc-pagination-jump-prev, .rc-pagination-prev, .rc-pagination-next {
+  min-width: inherit;
+  height: initial;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  margin-right: initial;
+  text-align: initial;
+  line-height: initial;
+  border-radius: unset;
+}
+li.rc-pagination-jump-next button::after, li.rc-pagination-jump-prev button::after, .rc-pagination-prev button::after, .rc-pagination-next button::after {
+  content: ""
+}
+li.rc-pagination-options {
+  display: none;
+}
 `;
 
 export default theme;
