@@ -14,10 +14,11 @@ import {
 } from "../../features/product";
 import { FilterState } from "../../@types/filter";
 import { queryParamsGenerator } from "../../utils/query";
+import Loading from "../../components/Loading";
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
-  const { products, isLoading, error, totalCount } = useAppSelector(
+  const { products, isLoading } = useAppSelector(
     (state: { product: ProductState }) => state.product
   );
 
@@ -29,9 +30,6 @@ const ProductList = () => {
     selectedSort,
   } = useAppSelector((state: { filter: FilterState }) => state.filter);
 
-  console.log(totalCount);
-
-  console.log(products);
   useEffect(() => {
     (async function init() {
       dispatch(startLoading());
@@ -58,6 +56,10 @@ const ProductList = () => {
     selectedItemType,
     selectedSort,
   ]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <SectionTitle>Products</SectionTitle>
