@@ -10,9 +10,21 @@ const Layout = styled(Container)`
   background-color: ${(props) => props.theme.colors.grayBackground};
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: 1fr 2.054fr 1fr;
-  grid-template-areas: "filterWrapper mainWrapper basketWrapper";
+  grid-template-areas:
+    "basketWrapper basketWrapper basketWrapper"
+    "mainWrapper mainWrapper mainWrapper"
+    "filterWrapper filterWrapper filterWrapper";
   padding-top: 40px;
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.tablet}) {
+    grid-template-areas:
+      "filterWrapper basketWrapper basketWrapper"
+      "filterWrapper mainWrapper mainWrapper"
+      "filterWrapper mainWrapper mainWrapper";
+  }
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.laptop}) {
+    grid-template-columns: 1fr 2.054fr 1fr;
+    grid-template-areas: "filterWrapper mainWrapper basketWrapper";
+  }
 `;
 
 export const MainWrapper = styled.main`
@@ -23,5 +35,8 @@ export const FilterWrapper = styled.aside`
 `;
 export const BasketWrapper = styled.aside`
   grid-area: basketWrapper;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.laptop}) {
+    padding: 8px;
+  }
 `;
 export default Layout;

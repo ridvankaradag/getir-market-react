@@ -13,6 +13,9 @@ export const GroupTitle = styled.h4`
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
   letter-spacing: ${(props) => props.theme.letterSpacings.none};
   color: ${(props) => props.theme.colors.grayMedium};
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.laptop}) {
+    text-align: center;
+  }
 `;
 export const GroupWrapper = styled.div`
   padding: 24px;

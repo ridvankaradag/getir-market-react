@@ -33,6 +33,9 @@ const ProductName = styled.h3`
   letter-spacing: ${(props) => props.theme.letterSpacings.none};
   color: ${(props) => props.theme.colors.black};
   margin-bottom: 8px;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.laptop}) {
+    text-align: center;
+  }
 `;
 
 type ProductProps = {

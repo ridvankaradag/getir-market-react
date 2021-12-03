@@ -19,12 +19,17 @@ const PaginationList = styled(Pagination)`
   gap: 12px;
   align-items: center;
   width: 100%;
-  padding: 0 36px;
+  padding: 0 6px;
   & li:first-child {
     margin-right: auto;
   }
   & li.rc-pagination-next {
     margin-left: auto;
+  }
+
+  @media screen and (min-width: ${(props) =>
+      props.theme.breakpoints.mobileLarge}) {
+    padding: 0 36px;
   }
 `;
 
